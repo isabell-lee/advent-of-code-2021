@@ -52,6 +52,17 @@
 
 // You can also [Share] this puzzle.
 
-const sampleInput = require('./01input.js');
+const fs = require('fs');
 
-console.log(sampleInput);
+let sampleInput = [];
+
+fs.readFile(`${__dirname}/01input.txt`, 'utf8', function (err, data) {
+  if (err) {
+    return console.log(err);
+  } else {
+    sampleInput = data.split('\n');
+
+  }
+  console.log(sampleInput);
+});
+

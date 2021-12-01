@@ -54,15 +54,23 @@
 
 const fs = require('fs');
 
-let sampleInput = [];
+var smallExample = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
 
-fs.readFile(`${__dirname}/01input.txt`, 'utf8', function (err, data) {
-  if (err) {
-    return console.log(err);
-  } else {
-    sampleInput = data.split('\n');
+var sampleString = fs.readFileSync(`${__dirname}/01input.txt`, 'utf8');
+var sampleInput = sampleString.split('\n');
 
+// console.log(sampleInput);
+
+
+var depthCounter = function (depths) {
+  var count = 0;
+  // console.log(typeof depths[0]);
+  for (var i = 1; i < depths.length; i++) {
+    if (parseInt(depths[i]) > parseInt(depths[i - 1])) {
+      count++;
+    }
   }
-  console.log(sampleInput);
-});
+  return count;
+}
 
+console.log(sampleInput.length, depthCounter(sampleInput));
